@@ -1,11 +1,19 @@
 h1{
     color: black;
+    text-align: center;
 }
 
-body{
-    background-image: url('..//image/food.jpg');
-    background-size: cover;
-    background-position: center;
+html{
+    background-image: url('..//image/WholeFoods.jpg');
     background-repeat: no-repeat;
 }
 
+section{
+    background: white;
+    border-radius: 20px;
+    border: 4px solid black;
+    height: auto;
+    width: 30%;
+    padding: 20px;
+    margin: 30px;
+}

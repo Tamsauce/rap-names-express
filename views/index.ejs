@@ -18,26 +18,28 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Whole Foods Grocery List</h1>
-    <ul class="rappers">
-    <% for(let i=0; i < info.length; i++) {%>
-        <li class="rapper">
-            <span><%= info[i].departmentName %></span>
-            <span><%= info[i].groceryList %></span>
-            <span><%= info[i].likes %></span>
-            <span class='fa fa-thumbs-up'></span>
-            <span class='fa fa-trash'></span>
-        </li>
-    <% } %>
-    </ul>
+    <section>
+        <h1>Whole Foods Grocery List</h1>
+        <ul class="rappers">
+        <% for(let i=0; i < info.length; i++) {%>
+            <li class="rapper">
+                <span><%= info[i].departmentName %></span>
+                <span><%= info[i].groceryList %></span>
+                <span><%= info[i].likes %></span>
+                <span class='fa fa-thumbs-up'></span>
+                <span class='fa fa-trash'></span>
+            </li>
+        <% } %>
+        </ul>
 
-    <h2>Add Item:</h2>
+        <h3>Add Item:</h3>
 
-    <form action="/addRapper" method="POST">
-        <input type="text" placeholder="Department" name="departmentName">
-        <input type="text" placeholder="Grocery List" name="groceryList">
-        <input type="submit">
-    </form>
+        <form action="/addRapper" method="POST">
+            <input type="text" placeholder="Department" name="departmentName">
+            <input type="text" placeholder="Grocery List" name="groceryList">
+            <input type="submit" value="Submit">
+        </form>
+    </section>
     
 
     <script src='js/main.js'></script>
