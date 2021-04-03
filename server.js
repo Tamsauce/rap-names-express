@@ -9,15 +9,11 @@ let db,
     dbConnectionStr = process.env.DB_STRING,
     dbName = 'rap'
 
-MongoClient.connect('mongodb+srv://doggiedog:doggiedogworld@cluster0.k8neb.mongodb.net/dogapi?retryWrites=true&w=majority', { useUnifiedTopology: true })
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
-    .catch(error => {
-        console.log('error',error)
-    }) 
-
     
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -34,8 +30,8 @@ app.get('/',(request, response)=>{
 })
 
 app.post('/addRapper', (request, response) => {
-    db.collection('rappers').insertOne({stageName: request.body.stageName,
-    birthName: request.body.birthName, likes: 0})
+    db.collection('rappers').insertOne({departmentName: request.body.departmentName,
+    groceryList: request.body.groceryList, likes: 0})
     .then(result => {
         console.log('Rapper Added')
         response.redirect('/')
@@ -44,7 +40,7 @@ app.post('/addRapper', (request, response) => {
 })
 
 app.put('/addOneLike', (request, response) => {
-    db.collection('rappers').updateOne({stageName: request.body.stageNameS, birthName: request.body.birthNameS,likes: request.body.likesS},{
+    db.collection('rappers').updateOne({departmentName: request.body.departmentNameS, groceryList: request.body.groceryListS,likes: request.body.likesS},{
         $set: {
             likes:request.body.likesS + 1
           }
@@ -61,7 +57,7 @@ app.put('/addOneLike', (request, response) => {
 })
 
 app.delete('/deleteRapper', (request, response) => {
-    db.collection('rappers').deleteOne({stageName: request.body.stageNameS})
+    db.collection('rappers').deleteOne({departmentName: request.body.departmentNameS})
     .then(result => {
         console.log('Rapper Deleted')
         response.json('Rapper Deleted')

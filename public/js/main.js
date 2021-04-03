@@ -10,15 +10,15 @@ Array.from(thumbText).forEach((element)=>{
 })
 
 async function deleteRapper(){
-    const sName = this.parentNode.childNodes[1].innerText
-    const bName = this.parentNode.childNodes[3].innerText
+    const dName = this.parentNode.childNodes[1].innerText
+    const gList = this.parentNode.childNodes[3].innerText
     try{
         const response = await fetch('deleteRapper', {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              'stageNameS': sName,
-              'birthNameS': bName
+              'departmentNameS': dName,
+              'groceryListS': gList
             })
           })
         const data = await response.json()
@@ -31,16 +31,16 @@ async function deleteRapper(){
 }
 
 async function addLike(){
-    const sName = this.parentNode.childNodes[1].innerText
-    const bName = this.parentNode.childNodes[3].innerText
+    const dName = this.parentNode.childNodes[1].innerText
+    const gList = this.parentNode.childNodes[3].innerText
     const tLikes = Number(this.parentNode.childNodes[5].innerText)
     try{
         const response = await fetch('addOneLike', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              'stageNameS': sName,
-              'birthNameS': bName,
+              'departmentNameS': dName,
+              'groceryListS': gList,
               'likesS': tLikes
             })
           })
