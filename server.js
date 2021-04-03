@@ -9,11 +9,15 @@ let db,
     dbConnectionStr = process.env.DB_STRING,
     dbName = 'rap'
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+MongoClient.connect('mongodb+srv://doggiedog:doggiedogworld@cluster0.k8neb.mongodb.net/dogapi?retryWrites=true&w=majority', { useUnifiedTopology: true })
     .then(client => {
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
+    .catch(error => {
+        console.log('error',error)
+    }) 
+
     
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
